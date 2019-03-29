@@ -5,11 +5,17 @@ if id syncuser ; then
   groupdel syncuser
 fi
 
-groupadd -g $GID syncuser
-useradd -l -u $UID -g syncuser syncuser
+groupadd -g $PGID syncuser
+useradd -l -u $PUID -g syncuser syncuser
 chown syncuser:syncuser $TARGET_DIR
-chmod 755 $TARGET_DIR
-chmod g+s $TARGET_DIR
+chmod $PERMISSIONS_MASK $TARGET_DIR
 
-exec sudo -u syncuser -H python /usr/src/app/vendor/terrasync.py --target=${TARGET_DIR} --quick
-#exec sudo -u syncuser -H python -c "/usr/src/app/terrasync.py --target=${TARGET_DIR} --quick --remove-orphan"
+if [ "${SET_STICKY_BIT}" = true ]; then
+  chmod g+s $TARGET_DIR
+fi
+
+if [ "${REMOVE_ORPHANS}" = true ]; then
+  exec sudo -u syncuser -H python -c "/usr/src/app/terrasync.py --target=${TARGET_DIR} --quick --remove-orphan"
+else
+  exec sudo -u syncuser -H python /usr/src/app/vendor/terrasync.py --target=${TARGET_DIR} --quick
+fi
