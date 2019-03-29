@@ -11,27 +11,13 @@ You can read about the scrypt on its wiki [here](http://wiki.flightgear.org/Terr
 ### Docker
 
 ```bash
-docker create \
+docker run \
+    --rm \
     --name=terrasync
     -e PUID=1000 \
     -e PGID=1000 \
     -v </path/to/your/share>:/terrasync
     cgspeck/terrasync
-```
-
-### Docker-Compose
-
-```yaml
-version: "2"
-services:
-  nginx:
-    image: cgspeck/terrasync
-    container_name: terrasync
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - </path/to/your/share>:/terrasync
 ```
 
 ## Parameters

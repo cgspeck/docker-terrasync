@@ -10,7 +10,7 @@ useradd -l -u $PUID -g syncuser syncuser
 chown syncuser:syncuser $TARGET_DIR
 
 if [ "${REMOVE_ORPHANS}" = true ]; then
-  exec sudo -u syncuser -H python /usr/src/app/terrasync.py --target=${TARGET_DIR} --quick --remove-orphan
+  exec sudo -E -u syncuser -H python /usr/src/app/wrapper.py --target=${TARGET_DIR} --remove-orphan
 else
-  exec sudo -u syncuser -H python /usr/src/app/vendor/terrasync.py --target=${TARGET_DIR} --quick
+  exec sudo -E -u syncuser -H python /usr/src/app/wrapper.py --target=${TARGET_DIR}
 fi
