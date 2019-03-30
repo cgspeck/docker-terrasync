@@ -38,5 +38,5 @@ You can use `id` to find your user id and group id:
 
 ```
 $ id foo
-uid=1000(foo) gid=1000(foo
+uid=1000(foo) gid=1000(foo)
 ```
