@@ -20,8 +20,8 @@ chown syncuser:$PGID $TARGET_DIR
 
 if [ "${REMOVE_ORPHANS}" = true ]; then
   echo "Starting sync with remove orphans flag"
-  exec sudo -E -u syncuser -H python /usr/src/app/wrapper.py --target=${TARGET_DIR} --remove-orphan
+  exec sudo -E -u syncuser -H python /usr/src/app/wrapper.py --target=${TARGET_DIR} --remove-orphan --url="$URL"
 else
   echo "Starting sync without removing orphans"
-  exec sudo -E -u syncuser -H python /usr/src/app/wrapper.py --target=${TARGET_DIR}
+  exec sudo -E -u syncuser -H python /usr/src/app/wrapper.py --target=${TARGET_DIR} --url="$URL"
 fi

@@ -5,7 +5,6 @@ from pathlib import Path
 from vendor.terrasync import main
 
 def runner():
-    print(os.environ)
     args = main.parseCommandLine()
 
     fp = Path(os.environ['TARGET_DIR'], ".full-sync-complete")

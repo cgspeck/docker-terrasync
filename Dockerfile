@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 ADD . /usr/src/app
 
 ENV TARGET_DIR=/terrasync
+ENV URL="https://dream.t3r.de/fgscenery/"
 ENV PUID=1000
 ENV PGID=1000
 ENV REMOVE_ORPHANS=false

@@ -14,6 +14,7 @@ You can read about the scrypt on its wiki [here](http://wiki.flightgear.org/Terr
 docker run \
     --rm \
     --name=terrasync \
+    -e URL="https://dream.t3r.de/fgscenery/" \
     -e PUID=1000 \
     -e PGID=1000 \
     -v </path/to/your/share>:/terrasync \
@@ -24,6 +25,7 @@ docker run \
 
 Parameter | Function
 --- | ---
+-e URL="https://dream.t3r.de/fgscenery/" | Which Flightgear URL to use
 -e PUID=1000 | User ID
 -e PGID=1000 | Group ID
 -e REMOVE_ORPHANS=false | If true, will be passed to `terrasync.py` and cause it to delete orphaned files in the mount
@@ -40,3 +42,14 @@ You can use `id` to find your user id and group id:
 $ id foo
 uid=1000(foo) gid=1000(foo)
 ```
+
+### Known Flightgear URLS
+
+Here are some repo urls you can try:
+
+* https://dream.t3r.de/fgscenery/
+* http://ns334561.ip-5-196-65.eu/terrasync/
+* https://ukmirror.flightgear.org/fgscenery/
+* http://flightgear.sourceforge.net/scenery
+
+Gathered from [this post](https://forum.flightgear.org/viewtopic.php?f=5&t=35408#p343987). 
