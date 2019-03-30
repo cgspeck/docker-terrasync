@@ -8,7 +8,7 @@ You can read about the scrypt on its wiki [here](http://wiki.flightgear.org/Terr
 
 ## Usage
 
-### Docker
+With Docker run:
 
 ```bash
 docker run \
@@ -21,6 +21,17 @@ docker run \
     cgspeck/terrasync:latest
 ```
 
+You can also add the following commands to the end of the run command to  change the way it behaves:
+
+**`console`**
+
+Bring up a bash terminal within the container.
+
+
+**`crawl`**
+
+If you find `terrasync.py` too slow, use [HTTrack](https://www.httrack.com/) in multiple connection mode to download the scenery mirror. 
+
 ## Parameters
 
 Parameter | Function
@@ -29,6 +40,7 @@ Parameter | Function
 -e PUID=1000 | User ID
 -e PGID=1000 | Group ID
 -e REMOVE_ORPHANS=false | If true, will be passed to `terrasync.py` and cause it to delete orphaned files in the mount
+-e CONNECTION_COUNT=20 | If using the crawl option, how many simultaneous connections to use
 
 ### User / Group Identifiers
 

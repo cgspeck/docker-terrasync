@@ -18,7 +18,18 @@ echo "Creating syncuser"
 useradd -l -u $PUID -g $PGID syncuser
 chown syncuser:$PGID $TARGET_DIR
 
-if [ "${REMOVE_ORPHANS}" = true ]; then
+if [[ $# -eq 1 ]]; then
+  case "$1" in
+    "console" | "shell" | "bash" | "/bin/bash" )
+      exec /bin/bash
+      ;;
+    "crawl" )
+      exec sudo -E -u syncuser -H python /usr/src/app/crawl-sync.py
+      ;;
+  esac
+fi
+
+if [[ "${REMOVE_ORPHANS}" = true ]]; then
   echo "Starting sync with remove orphans flag"
   exec sudo -E -u syncuser -H python /usr/src/app/wrapper.py --target=${TARGET_DIR} --remove-orphan --url="$URL"
 else
