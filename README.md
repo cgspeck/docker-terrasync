@@ -13,11 +13,11 @@ You can read about the scrypt on its wiki [here](http://wiki.flightgear.org/Terr
 ```bash
 docker run \
     --rm \
-    --name=terrasync
+    --name=terrasync \
     -e PUID=1000 \
     -e PGID=1000 \
-    -v </path/to/your/share>:/terrasync
-    cgspeck/terrasync
+    -v </path/to/your/share>:/terrasync \
+    cgspeck/terrasync:latest
 ```
 
 ## Parameters

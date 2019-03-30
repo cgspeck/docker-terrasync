@@ -1,2 +1,2 @@
 #! /bin/bash -e
-docker build . -t terrasync
+docker build . -t cgspeck/terrasync
