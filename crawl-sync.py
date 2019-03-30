@@ -25,10 +25,14 @@ def runner():
             f'-c{connections}',
             '--disable-security-limits',
             '-s0',
-            '-v'
+            '-v',
+            '-D',
+            '-n'
         ],
         check=True
     )
+    print("Moving folders into place")
+    raise NotImplementedError
     print("Downloading .dirindex files")
     raise NotImplementedError
     Path(os.environ['TARGET_DIR'], ".full-sync-complete").touch()
