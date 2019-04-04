@@ -5,6 +5,7 @@ from dataclasses import dataclass
 @dataclass()
 class Config:
     destination: Path
+    test_mode: bool
     mirror: str = None
     large_download_threshold: int = 104857600  # 100 mb
 

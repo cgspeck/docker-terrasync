@@ -26,6 +26,9 @@ class Main(QCoreApplication):
         self._enqueue_directory_list_analysis(self._mirror_url)
         self._urls_queued = set()
 
+        if config.test_mode:
+            self._test_dir_analysis = 0
+
     def _enqueue_directory_list_analysis(self, url):
         job_info = JobInfo(
             Instruction.ANALYSE_DIRECTORY_LIST,
@@ -43,11 +46,11 @@ class Main(QCoreApplication):
     def enqueue_download_analysis(self, url: str):
         logging.info(f"enqueue_download_analysis recieved with {url}")
         if self._validate_url(url):
-            logging.info(f"URL {url} passed validation, queuing")
+            logging.info(f"URL {url} passed validation")
             self._job_count += 1
             self._total_jobs += 1
             job_info = JobInfo(
-                Instruction.ANALYSE_DIRECTORY_LIST,
+                Instruction.ANALYSE_DOWNLOAD_CANDIDATE,
                 AnalyseIndexPayload(url)
             )
             worker = DownloadAnalyser(job_info, self._config)
@@ -68,6 +71,13 @@ class Main(QCoreApplication):
 
         if self._validate_url(url):
             logging.info(f"URL {url} passed validation, queuing")
+
+            if self._config.test_mode:
+                self._test_dir_analysis += 1
+                if self._test_dir_analysis > 30:
+                    logging.info("Not queuing directory analysis, in test mode")
+                    return
+
             self._job_count += 1
             self._total_jobs += 1
             self._enqueue_directory_list_analysis(url)
