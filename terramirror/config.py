@@ -8,6 +8,7 @@ class Config:
     test_mode: bool
     mirror: str = None
     large_download_threshold: int = 104857600  # 100 mb
+    thread_count: int = None
 
     @property
     def headers(self):

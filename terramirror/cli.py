@@ -18,6 +18,7 @@ def create_parser():
     parser.add_argument('--log-level', choices=log_levels, default=log_levels[0])
     parser.add_argument('--mirror', default='https://dream.t3r.de/fgscenery/')
     parser.add_argument('--test', action='store_true')
+    parser.add_argument('--threads', type=int)
 
     return parser
 
@@ -33,7 +34,8 @@ def main():
     config = Config(
         destination=args.destination,
         test_mode=args.test,
-        mirror=args.mirror
+        mirror=args.mirror,
+        thread_count=args.threads
     )
     main = Main(config)
     exit(main.exec_())

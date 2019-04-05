@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 
 from PyQt5.QtCore import QCoreApplication, QThreadPool, pyqtSlot
 
+from terramirror.config import Config
 from terramirror.directory_list_analyser import DirectoryListWorker
 from terramirror.download_analyser import DownloadAnalyser
 from terramirror.job_info import JobInfo
@@ -16,10 +17,14 @@ from terramirror.payload import AnalyseIndexPayload, AnalyseDownloadPayload, Dow
 
 
 class Main(QCoreApplication):
-    def __init__(self, config):
+    def __init__(self, config: Config):
         super(Main, self).__init__(sys.argv)
         self._config = config
         self.threadpool = QThreadPool()
+
+        if self._config.thread_count is not None:
+            self.threadpool.setMaxThreadCount(self._config.thread_count)
+
         print("Multithreading with maximum %d threads" % self.threadpool.maxThreadCount())
 
         self._mirror_url = config.mirror
