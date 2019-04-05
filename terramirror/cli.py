@@ -26,6 +26,9 @@ def main():
     parser = create_parser()
     args = parser.parse_args()
 
+    if args.test:
+        args.log_level = 'DEBUG'
+
     logging.basicConfig(level=getattr(logging, args.log_level))
     config = Config(
         destination=args.destination,

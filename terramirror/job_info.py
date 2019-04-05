@@ -9,3 +9,4 @@ from terramirror.payload import AnalyseIndexPayload
 class JobInfo:
     instruction: Instruction
     payload: typing.Type[AnalyseIndexPayload]
+    attempt_number: int = 0

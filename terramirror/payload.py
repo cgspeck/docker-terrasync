@@ -12,14 +12,8 @@ class AnalyseIndexPayload:
 class AnalyseDownloadPayload(AnalyseIndexPayload):
     pass
 
-
 @dataclass
-class DownloadSmallFilePayload(AnalyseIndexPayload):
+class DownloadLargeFilePayload(AnalyseIndexPayload):
     destination: Path
     download_datetime: datetime
     download_size: int
-
-
-@dataclass
-class DownloadLargeFilePayload(DownloadSmallFilePayload):
-    pass

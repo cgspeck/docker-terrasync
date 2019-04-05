@@ -1,3 +1,4 @@
+import logging
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
@@ -25,7 +26,7 @@ class DirectoryListWorker(QRunnable):
     @pyqtSlot()
     def run(self):
         url = self._payload.url
-        print("start of run")
+        logging.info(f"Analysing directory list at {url}")
         r = requests.get(url, headers=self._config.headers)
         r.raise_for_status()
 
@@ -51,5 +52,5 @@ class DirectoryListWorker(QRunnable):
         if r.status_code == 200:
             self.signals.enqueue_download_analysis.emit(dir_index)
 
-        print("end of run")
+        logging.info(f"Finished analysing directory list at {url}")
         self.signals.finished.emit(self._job_info)
