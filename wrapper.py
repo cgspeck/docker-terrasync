@@ -26,7 +26,6 @@ def runner():
 
     if args.report:
         report.printReport()
-    from time import sleep; sleep(10)
 
     fp.touch()
     dt_end = datetime.now()
