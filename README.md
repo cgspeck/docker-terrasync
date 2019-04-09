@@ -4,7 +4,7 @@ This will sync down the entire world scenery database to the specified mount.
 
 The script itself is cloned directly from the [Flightgear](https://sourceforge.net/p/flightgear/flightgear/ci/next/tree/scripts/python/) repository and is licensed under the GNU GPLv2.
 
-You can read about the scrypt on its wiki [here](http://wiki.flightgear.org/TerraSync).
+You can read about the script on its wiki [here](http://wiki.flightgear.org/TerraSync).
 
 ## Usage
 
@@ -45,11 +45,12 @@ uid=1000(foo) gid=1000(foo)
 
 ### Known Flightgear URLS
 
-Here are some repo urls you can try:
+The full list of mirrors [is here](https://toolbox.googleapps.com/apps/dig/#ANY/):
 
 * https://dream.t3r.de/fgscenery/
+* https://mpserver16.flightgear.org/scenery/
 * http://ns334561.ip-5-196-65.eu/terrasync/
 * https://ukmirror.flightgear.org/fgscenery/
 * http://flightgear.sourceforge.net/scenery
 
-Gathered from [this post](https://forum.flightgear.org/viewtopic.php?f=5&t=35408#p343987). 
+Linked from [this part](https://toolbox.googleapps.com/apps/dig/#ANY/terrasync.flightgear.org) of the Terrasync wiki entry. 
